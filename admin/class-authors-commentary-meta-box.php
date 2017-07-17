@@ -53,7 +53,7 @@
 	 * @since 	1.2.0
 	 */
 	public function display_meta_box() {
-		
+		include_once( 'views/authors-commentary-navigation.php' );
 	}
 
  }

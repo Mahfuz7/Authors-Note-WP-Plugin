@@ -60,5 +60,22 @@
 			$this->version = $version;
 			$this->meta_box = new Authors_Commentary_Meta_Box();
 
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
+		}
+
+		/**
+		 * Enqueues all files specially for the dashboard
+		 *
+		 * @since	1.2.0
+		 */
+		public function enqueue_admin_styles() {
+
+			wp_enqueue_style(
+				$this->name . '-admin',
+				plugins_url( 'authors-commentary/admin/assets/css/admin.css' ),
+				false,
+				$this->version
+			);
+			
 		}
   }
