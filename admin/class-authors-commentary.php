@@ -61,6 +61,7 @@
 			$this->meta_box = new Authors_Commentary_Meta_Box();
 
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 		}
 
 		/**
@@ -76,6 +77,26 @@
 				false,
 				$this->version
 			);
-			
+
 		}
+
+		/**
+		 * Includes the JavaScript necessary to control the toggling of the tabs in the
+		 * meta box that's represnted by the class.
+		 *
+		 * @since 	1.3.0
+		 */
+		public function enqueue_admin_scripts() {
+
+			if( 'post' == get_current_screen()->id ) {
+				wp_enqueue_script(
+					$this->name . '-admin',
+					plugins_url( 'authors-commentary/admin/assets/js/tabs.js' ),
+					array( 'jquery' ),
+					$this->version
+				);
+			}
+
+		}
+
   }
